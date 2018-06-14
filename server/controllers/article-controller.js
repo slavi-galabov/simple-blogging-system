@@ -33,13 +33,20 @@ module.exports = {
         Article
             .findById(id)
             .populate('author')
+            .populate({
+                path: 'comment',
+                populate: {
+                    path: 'author',
+                }
+            })
             .then(article => {
                 if (!article) {
                     res.locals.globalError = 'Invalid article'
                     res.redirect('article/list/1')
                     return
                 }
-                let options = {year: 'numeric', month: 'long', day: 'numeric'};
+
+                let options = {year: 'numeric', month: 'long', day: 'numeric'}
                 let dateFormated = article.date.toLocaleDateString('en-UK', options)
 
                 res.locals.dateFormated = dateFormated
@@ -47,6 +54,8 @@ module.exports = {
                 res.locals.article = article
                 res.render('article/details')
             })
+
+
     },
     articleList: (req, res) => {
         Article.find({}).then((data) => {

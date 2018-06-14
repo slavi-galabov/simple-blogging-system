@@ -13,6 +13,7 @@ module.exports = (app) => {
 
     app.get('/article/add', auth.isInRole('Admin'), controllers.article.articleAddGet)
     app.post('/article/add', auth.isInRole('Admin'), controllers.article.articleAddPost)
+    app.post('/comment/add', controllers.comment.commentAddPost)
     app.post('/article/edit/:id', auth.isInRole('Admin'), controllers.article.articleEditPost)
     app.get('/article/edit/:id', auth.isInRole('Admin'), controllers.article.articleEditGet)
     app.get('/article/delete/:id', auth.isInRole('Admin'), controllers.article.articleDelete)

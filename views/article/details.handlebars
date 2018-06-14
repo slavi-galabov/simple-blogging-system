@@ -3,7 +3,10 @@
 {{/if}}
 
 {{article.description}}
-<p>Created on <time datetime="{{dateFormated}}">{{dateFormated}}</time>.</p>
+<p>Created on
+    <time datetime="{{dateFormated}}">{{dateFormated}}</time>
+    .
+</p>
 <div class="text-muted">Author: {{article.author.firstName}} {{article.author.lastName}}</div>
 
 <a href="/article/edit/{{article.id}}" class="btn btn-link">
@@ -12,3 +15,27 @@
 <a href="/article/delete/{{article.id}}" class="btn btn-link">
     <span class="glyphicon glyphicon-remove"></span> Delete
 </a>
+{{#each article.comment}}
+    <div class="well">
+        <p>{{this.comment}}</p>
+        <small>Author: {{this.author.firstName}} {{this.author.lastName}} date:{{this.date}}</small>
+    </div>
+{{else}}
+    <p class="text-muted">Be the first one to leave a comment.</p>
+{{/each}}
+<form action="/comment/add" method="post">
+    <input type="hidden" name="articleId" value="{{article._id}}">
+    <div class="form-group">
+        <label for="comment">
+            {{#if article.comment}}
+                Your comment:
+            {{else}}
+                Be the first one to leave a comment.
+            {{/if}}
+        </label>
+        <textarea name="comment" id="comment" cols="30" rows="10" class="form-control" required></textarea>
+    </div>
+    <div class="input-group">
+        <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+</form>
