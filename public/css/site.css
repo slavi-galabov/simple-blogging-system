@@ -1,0 +1,91 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: red
+}
+
+a:hover {
+    text-decoration: none
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.read-more {
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 22px;
+    padding: 10px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.read-more span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.read-more span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.read-more:hover span {
+    padding-right: 25px;
+    color: white;
+}
+
+.read-more:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.article-list {
+    border: 1px solid;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    display: block;
+    float: left;
+    width: 100%;
+}
+
+.excerpt {
+    padding: 30px 15px;
+}
+
+footer {
+    display: block;
+    background-color: black;
+    color: white;
+    text-align: center;
+    width: 100%;
+    font-size: 80%;
+    padding: 20px;
+    margin-top: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+}

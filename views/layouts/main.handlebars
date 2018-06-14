@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        {{#if title}}
+            {{title}} |
+        {{/if}}
+        My Cool Blog System
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="/css/site.css" type="text/css" rel="stylesheet"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Blog name</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/article/list/1">All articles</a></li>
+            {{#if isAdmin}}
+                <li><a href="/article/add">Add article</a></li>
+            {{/if}}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            {{#if currentUser}}
+                <li>{{currentUser.username}}</li>
+                <li>
+                    <form id="logout-form" action="/users/logout" method="POST"></form>
+                    <a href="javascript:document.getElementById('logout-form').submit()"> <span
+                            class="glyphicon glyphicon-log-out"></span> Logout</a>
+                </li>
+            {{else}}
+                <li><a href="/users/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            {{/if}}
+
+        </ul>
+    </div>
+</nav>
+
+<main class="container">
+    {{#if globalError}}
+        <div class="alert alert-danger fade in alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+            {{globalError}}
+        </div>
+    {{/if}}
+    {{#if globalSuccess}}
+        <div class="alert alert-success fade in alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+            {{globalSuccess}}
+        </div>
+    {{/if}}
+    {{#if title}}
+        <h1>{{title}}</h1>
+    {{/if}}
+    {{{body}}}
+
+</main>
+<div class="clearfix"></div>
+<footer>
+    <div class="container">
+        © Copyright - All Rights Reserved
+    </div>
+</footer>
+</body>
+</html>

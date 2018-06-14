@@ -1,0 +1,11 @@
+{{article.description}}
+
+<p>Created on <time datetime="{{dateFormated}}">{{dateFormated}}</time>.</p>
+<div class="text-muted">Author: {{article.author.firstName}} {{article.author.lastName}}</div>
+
+<a href="/article/edit/{{article.id}}" class="btn btn-link">
+    <span class="glyphicon glyphicon-edit"></span> Edit
+</a>
+<a href="/article/delete/{{article.id}}" class="btn btn-link">
+    <span class="glyphicon glyphicon-remove"></span> Delete
+</a>
