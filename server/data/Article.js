@@ -7,6 +7,7 @@ let articleSchema = new mongoose.Schema({
     description: {type: String, required: REQUIRED_VALIDATION_MESSAGE},
     author: {type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User'},
     date: {type: mongoose.Schema.Types.Date, required: true, default: Date.now},
+    image: {type: String},
 })
 
 let Article = mongoose.model('Article', articleSchema)

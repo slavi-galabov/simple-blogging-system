@@ -1,5 +1,8 @@
-{{article.description}}
+{{#if article.image}}
+    <img src="/img/{{article.image}}" alt="{{article.title}}" class="img-responsive">
+{{/if}}
 
+{{article.description}}
 <p>Created on <time datetime="{{dateFormated}}">{{dateFormated}}</time>.</p>
 <div class="text-muted">Author: {{article.author.firstName}} {{article.author.lastName}}</div>
 

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const passport = require('passport')
 const handlebars = require('express-handlebars')
-const auth = require('./auth')
+const fileUpload = require('express-fileupload');
 
 module.exports = (app) => {
     app.engine('handlebars', handlebars({
@@ -33,6 +33,10 @@ module.exports = (app) => {
     })
 
     app.use(express.static('public'))
+    app.use(fileUpload({
+        limits: { fileSize: 50 * 1024 * 1024 },
+        // safeFileNames: true
+    }))
 
     console.log('Express ready!')
 }
